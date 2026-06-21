@@ -4,14 +4,17 @@ FROM node:18-alpine
 # Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy package files from BACKEND
+COPY BACKEND/package*.json ./
 
 # Install dependencies
 RUN npm ci --only=production
 
-# Copy source code
-COPY . .
+# Copy backend source code
+COPY BACKEND/ ./
+
+# Copy frontend static files
+COPY ["dbms project/", "../dbms project/"]
 
 # Create uploads directory
 RUN mkdir -p uploads
