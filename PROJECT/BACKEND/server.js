@@ -7,6 +7,7 @@ const morgan = require('morgan');
 require('dotenv').config();
 
 const { sequelize, testConnection } = require('./config/database');
+const path = require('path');
 
 const models = require('./models');
 
@@ -32,6 +33,8 @@ if (process.env.NODE_ENV === 'production') {
     origin: process.env.FRONTEND_URL || 'http://localhost:3000',
     credentials: true
   }));
+  // Serve static frontend files
+  app.use(express.static(path.join(__dirname, '..', 'dbms project')));
 } else {
   app.use(cors());
 }
@@ -85,11 +88,16 @@ app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/manager', managerRoutes);
 app.use('/api/v1/orders', orderRoutes);
 
-app.use('*', (req, res) => {
-  res.status(404).json({
-    success: false,
-    message: 'Route not found'
-  });
+// Fallback for client-side routing (serve home page)
+app.get('*', (req, res) => {
+  if (process.env.NODE_ENV === 'production') {
+    res.sendFile(path.join(__dirname, '..', 'dbms project', 'home.html'));
+  } else {
+    res.status(404).json({
+      success: false,
+      message: 'Route not found'
+    });
+  }
 });
 
 app.use(errorHandler);

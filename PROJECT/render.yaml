@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: book-buddy-backend
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromService:
+          name: book-buddy-db
+          type: postgres
+    plan: free
+    autoDeploy: true
+    routes:
+      - path: /
+    healthCheckPath: /health
+  - type: postgres
+    name: book-buddy-db
+    plan: free
+    databaseName: bookbuddy
+    user: bookbuddy_user
+    password: securepassword
+    region: oregon
