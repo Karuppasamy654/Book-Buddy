@@ -2,7 +2,7 @@ services:
   - type: web
     name: book-buddy-backend
     env: docker
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: Dockerfile
     envVars:
       - key: NODE_ENV
         value: production

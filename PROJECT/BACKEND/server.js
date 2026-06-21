@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === 'production') {
     credentials: true
   }));
   // Serve static frontend files
-  app.use(express.static(path.join(__dirname, '..', 'dbms project')));
+  app.use(express.static(path.join(__dirname, 'dbms project')));
 } else {
   app.use(cors());
 }
@@ -91,7 +91,7 @@ app.use('/api/v1/orders', orderRoutes);
 // Fallback for client-side routing (serve home page)
 app.get('*', (req, res) => {
   if (process.env.NODE_ENV === 'production') {
-    res.sendFile(path.join(__dirname, '..', 'dbms project', 'home.html'));
+    res.sendFile(path.join(__dirname, 'dbms project', 'home.html'));
   } else {
     res.status(404).json({
       success: false,

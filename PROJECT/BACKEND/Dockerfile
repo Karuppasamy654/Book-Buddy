@@ -4,25 +4,24 @@ FROM node:18-alpine
 # Set working directory
 WORKDIR /app
 
-# Copy everything from the repository
-COPY . .
-
-# Change into the BACKEND directory where package.json lives
-WORKDIR /app/BACKEND
+# Copy package files
+COPY package*.json ./
 
 # Install dependencies
 RUN npm ci --only=production
 
-# Create uploads directory (just in case)
+# Copy all files (including dbms project)
+COPY . .
+
+# Create uploads directory
 RUN mkdir -p uploads
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nodejs -u 1001
 
-# Change ownership (optional but good practice)
+# Change ownership
 RUN chown -R nodejs:nodejs /app
-
 USER nodejs
 
 # Expose port
