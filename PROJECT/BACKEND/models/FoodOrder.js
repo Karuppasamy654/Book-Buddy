@@ -10,12 +10,20 @@ module.exports = (sequelize, DataTypes) => {
     },
     booking_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true,
+      allowNull: true,
       field: 'booking_id',
       references: {
         model: 'booking',
         key: 'booking_id'
+      }
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      field: 'user_id',
+      references: {
+        model: 'user',
+        key: 'user_id'
       }
     },
     order_date: {
@@ -48,6 +56,11 @@ module.exports = (sequelize, DataTypes) => {
     FoodOrder.belongsTo(models.Booking, {
       foreignKey: 'booking_id',
       as: 'booking'
+    });
+
+    FoodOrder.belongsTo(models.User, {
+      foreignKey: 'user_id',
+      as: 'user'
     });
 
     FoodOrder.hasMany(models.OrderDetail, {

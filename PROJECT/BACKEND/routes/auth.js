@@ -117,7 +117,7 @@ router.post('/login',
 
     const user = await User.findOne({ 
       where: { email },
-      attributes: ['user_id','name','email','password_hash','role','phone_number']
+      attributes: ['user_id','name','email','password_hash','role','phone_number', 'hotel_id']
     });
 
     if (!user) {

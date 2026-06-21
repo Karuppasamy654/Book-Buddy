@@ -1,7 +1,7 @@
 const express = require('express');
 const { body, validationResult, query } = require('express-validator');
 const { Op } = require('sequelize');
-const { FoodItem, Hotel } = require('../models');
+const { FoodItem, Hotel, HotelFood } = require('../models');
 const { protect, authorize, optionalAuth } = require('../middleware/auth');
 const { asyncHandler } = require('../middleware/errorHandler');
 const { uploadMultiple } = require('../middleware/upload');
@@ -80,13 +80,33 @@ router.get('/',
       include
     });
 
+    let resultData = foodItems.map(f => f.toJSON ? f.toJSON() : f);
+    if (req.query.hotel_id && HotelFood) {
+      try {
+        const overrides = await HotelFood.findAll({
+          where: { hotel_id: req.query.hotel_id, food_item_id: resultData.map(f => f.food_item_id) }
+        });
+        const overrideMap = new Map();
+        overrides.forEach(o => overrideMap.set(o.food_item_id, o.price));
+        
+        resultData = resultData.map(item => {
+          if (overrideMap.has(item.food_item_id) && overrideMap.get(item.food_item_id) !== null) {
+            item.price = overrideMap.get(item.food_item_id);
+          }
+          return item;
+        });
+      } catch (err) {
+        // Fallback to global prices if table missing
+      }
+    }
+
     res.json({
       success: true,
-      count: foodItems.length,
+      count: resultData.length,
       total: count,
       page,
       pages: Math.ceil(count / limit),
-      data: foodItems
+      data: resultData
     });
   })
 );

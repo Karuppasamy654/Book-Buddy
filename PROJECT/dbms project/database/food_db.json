@@ -1,0 +1,127 @@
+{
+  "hotels": {
+    "1": {
+      "id": 1,
+      "name": "Book Buddy Central Hotel",
+      "foodMenu": {
+        "breakfast": [
+          {
+            "id": "kesari",
+            "name": "Kesari",
+            "price": 120,
+            "img": "kesari.webp",
+            "description": "Traditional South Indian sweet dish",
+            "available": true
+          },
+          {
+            "id": "idli",
+            "name": "Idli Sambar (2pcs)",
+            "price": 100,
+            "img": "idli.jpg",
+            "description": "Soft rice cakes with spicy lentil soup",
+            "available": true
+          },
+          {
+            "id": "bread_omelette",
+            "name": "Bread Omelette (2 Eggs)",
+            "price": 200,
+            "img": "bread omlete.webp",
+            "description": "Fluffy omelette with toasted bread",
+            "available": true
+          }
+        ],
+        "lunch": [
+          {
+            "id": "chicken_biryani",
+            "name": "Chicken Biryani",
+            "price": 450,
+            "img": "chicken biriyani.webp",
+            "description": "Aromatic basmati rice with tender chicken",
+            "available": true
+          },
+          {
+            "id": "paneer_tikka",
+            "name": "Paneer Tikka Masala",
+            "price": 380,
+            "img": "paneer tikka.webp",
+            "description": "Cottage cheese in creamy tomato sauce",
+            "available": true
+          }
+        ],
+        "dinner": [
+          {
+            "id": "butter_chicken",
+            "name": "Butter Chicken",
+            "price": 550,
+            "img": "chicken gravy'.webp",
+            "description": "Tender chicken in rich tomato and cream sauce",
+            "available": true
+          },
+          {
+            "id": "veg_thali",
+            "name": "Royal Vegetarian Thali",
+            "price": 420,
+            "img": "mini lunch.webp",
+            "description": "Complete meal with multiple vegetarian dishes",
+            "available": true
+          }
+        ]
+      }
+    },
+    "2": {
+      "id": 2,
+      "name": "Grand Palace Resort",
+      "foodMenu": {
+        "breakfast": [
+          {
+            "id": "continental_breakfast",
+            "name": "Continental Breakfast",
+            "price": 350,
+            "img": "bread_jam.webp",
+            "description": "Fresh bread, jam, butter, and coffee",
+            "available": true
+          }
+        ],
+        "lunch": [
+          {
+            "id": "fish_curry",
+            "name": "Fish Curry",
+            "price": 400,
+            "img": "fish gravy.webp",
+            "description": "Spicy fish curry with rice",
+            "available": true
+          }
+        ],
+        "dinner": [
+          {
+            "id": "mutton_biryani",
+            "name": "Mutton Biryani",
+            "price": 500,
+            "img": "mutton biriyani.webp",
+            "description": "Fragrant rice with tender mutton",
+            "available": true
+          }
+        ]
+      }
+    },
+    "3": {
+      "id": 3,
+      "name": "Ocean View Suites",
+      "foodMenu": {
+        "breakfast": [],
+        "lunch": [],
+        "dinner": []
+      }
+    },
+    "4": {
+      "id": 4,
+      "name": "Mountain Retreat Inn",
+      "foodMenu": {
+        "breakfast": [],
+        "lunch": [],
+        "dinner": []
+      }
+    }
+  },
+  "lastUpdated": "2025-01-27T10:00:00Z"
+}

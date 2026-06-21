@@ -1,0 +1,559 @@
+{
+  "hotels": {
+    "taj-coromandel": {
+      "id": "taj-coromandel",
+      "name": "Taj Coromandel",
+      "location": "Anna Salai, Chennai",
+      "description": "Luxury hotel in the heart of Chennai with world-class amenities",
+      "rating": 4.8,
+      "reviews": 1234,
+      "image": "taj-coromandel.jpg",
+      "features": ["Luxury", "Pool", "Spa", "Fine Dining", "Business Center"],
+      "type": "luxury",
+      "amenities": ["pool", "spa", "restaurant", "gym", "wifi", "parking"],
+      "pricing": {
+        "standard": 8500,
+        "deluxe": 12000,
+        "suite": 18000,
+        "presidential": 25000
+      },
+      "rooms": {
+        "total": 200,
+        "available": 45,
+        "types": {
+          "standard": 120,
+          "deluxe": 60,
+          "suite": 15,
+          "presidential": 5
+        }
+      }
+    },
+    "itc-hotel": {
+      "id": "itc-hotel",
+      "name": "ITC Grand Chola",
+      "location": "Guindy, Chennai",
+      "description": "Business luxury hotel with modern facilities and excellent connectivity",
+      "rating": 4.7,
+      "reviews": 987,
+      "image": "itc-hotel.jpg",
+      "features": ["Business", "Conference", "Gym", "WiFi", "Parking"],
+      "type": "business",
+      "amenities": ["gym", "restaurant", "wifi", "parking", "conference"],
+      "pricing": {
+        "standard": 7200,
+        "deluxe": 10000,
+        "suite": 15000,
+        "presidential": 22000
+      },
+      "rooms": {
+        "total": 150,
+        "available": 32,
+        "types": {
+          "standard": 80,
+          "deluxe": 50,
+          "suite": 15,
+          "presidential": 5
+        }
+      }
+    },
+    "leela-palace": {
+      "id": "leela-palace",
+      "name": "The Leela Palace",
+      "location": "Adyar, Chennai",
+      "description": "Palace-style luxury hotel with beach access and premium services",
+      "rating": 4.9,
+      "reviews": 1456,
+      "image": "the-leela-palace.jpg",
+      "features": ["Palace", "Beach", "Fine Dining", "Spa", "Luxury"],
+      "type": "luxury",
+      "amenities": ["pool", "spa", "restaurant", "beach", "wifi"],
+      "pricing": {
+        "standard": 9800,
+        "deluxe": 14000,
+        "suite": 20000,
+        "presidential": 30000
+      },
+      "rooms": {
+        "total": 180,
+        "available": 28,
+        "types": {
+          "standard": 100,
+          "deluxe": 60,
+          "suite": 15,
+          "presidential": 5
+        }
+      }
+    },
+    "radisson-blu": {
+      "id": "radisson-blu",
+      "name": "Radisson Blu",
+      "location": "Egmore, Chennai",
+      "description": "Modern hotel with city views and contemporary amenities",
+      "rating": 4.5,
+      "reviews": 756,
+      "image": "Radisson Blu Hotel.jpg",
+      "features": ["Modern", "City View", "Restaurant", "WiFi", "Parking"],
+      "type": "business",
+      "amenities": ["restaurant", "wifi", "parking", "gym"],
+      "pricing": {
+        "standard": 5500,
+        "deluxe": 7500,
+        "suite": 12000,
+        "presidential": 18000
+      },
+      "rooms": {
+        "total": 120,
+        "available": 25,
+        "types": {
+          "standard": 70,
+          "deluxe": 35,
+          "suite": 10,
+          "presidential": 5
+        }
+      }
+    },
+    "novotel": {
+      "id": "novotel",
+      "name": "Novotel Chennai",
+      "location": "OMR, Chennai",
+      "description": "Tech-friendly hotel near IT parks with modern facilities",
+      "rating": 4.3,
+      "reviews": 634,
+      "image": "novotel.jpg",
+      "features": ["Tech Park", "Pool", "WiFi", "Modern", "Business"],
+      "type": "business",
+      "amenities": ["pool", "wifi", "gym", "restaurant"],
+      "pricing": {
+        "standard": 4200,
+        "deluxe": 6000,
+        "suite": 9000,
+        "presidential": 14000
+      },
+      "rooms": {
+        "total": 100,
+        "available": 35,
+        "types": {
+          "standard": 60,
+          "deluxe": 30,
+          "suite": 8,
+          "presidential": 2
+        }
+      }
+    },
+    "sheraton": {
+      "id": "sheraton",
+      "name": "Sheraton Grand",
+      "location": "T. Nagar, Chennai",
+      "description": "Shopping district hotel with spa and entertainment facilities",
+      "rating": 4.4,
+      "reviews": 892,
+      "image": "sheraton.jpg",
+      "features": ["Shopping", "Spa", "Bar", "Entertainment", "Luxury"],
+      "type": "luxury",
+      "amenities": ["spa", "restaurant", "bar", "wifi", "gym"],
+      "pricing": {
+        "standard": 6800,
+        "deluxe": 9500,
+        "suite": 14000,
+        "presidential": 20000
+      },
+      "rooms": {
+        "total": 140,
+        "available": 30,
+        "types": {
+          "standard": 80,
+          "deluxe": 45,
+          "suite": 12,
+          "presidential": 3
+        }
+      }
+    },
+    "taj-connemara": {
+      "id": "taj-connemara",
+      "name": "Taj Connemara",
+      "location": "Mount Road, Chennai",
+      "description": "Heritage hotel with traditional charm and modern amenities",
+      "rating": 4.6,
+      "reviews": 1123,
+      "image": "taj-connemara.jpg",
+      "features": ["Heritage", "Business", "Restaurant", "Traditional", "Luxury"],
+      "type": "luxury",
+      "amenities": ["restaurant", "wifi", "parking", "business"],
+      "pricing": {
+        "standard": 5900,
+        "deluxe": 8500,
+        "suite": 12000,
+        "presidential": 18000
+      },
+      "rooms": {
+        "total": 80,
+        "available": 15,
+        "types": {
+          "standard": 50,
+          "deluxe": 20,
+          "suite": 8,
+          "presidential": 2
+        }
+      }
+    },
+    "park-hotel": {
+      "id": "park-hotel",
+      "name": "The Park",
+      "location": "Anna Salai, Chennai",
+      "description": "Modern hotel with contemporary design and excellent facilities",
+      "rating": 4.2,
+      "reviews": 567,
+      "image": "the-park.jpg",
+      "features": ["Modern", "Pool", "Gym", "Restaurant", "Business"],
+      "type": "business",
+      "amenities": ["pool", "gym", "restaurant", "wifi", "parking"],
+      "pricing": {
+        "standard": 4500,
+        "deluxe": 6500,
+        "suite": 9500,
+        "presidential": 14000
+      },
+      "rooms": {
+        "total": 90,
+        "available": 20,
+        "types": {
+          "standard": 55,
+          "deluxe": 25,
+          "suite": 8,
+          "presidential": 2
+        }
+      }
+    },
+    "trident": {
+      "id": "trident",
+      "name": "Trident Chennai",
+      "location": "OMR, Chennai",
+      "description": "Tech-focused hotel with modern amenities and excellent connectivity",
+      "rating": 4.3,
+      "reviews": 445,
+      "image": "trident.jpg",
+      "features": ["Tech", "WiFi", "Parking", "Modern", "Business"],
+      "type": "budget",
+      "amenities": ["wifi", "parking", "restaurant"],
+      "pricing": {
+        "standard": 3800,
+        "deluxe": 5500,
+        "suite": 8000,
+        "presidential": 12000
+      },
+      "rooms": {
+        "total": 75,
+        "available": 18,
+        "types": {
+          "standard": 50,
+          "deluxe": 20,
+          "suite": 4,
+          "presidential": 1
+        }
+      }
+    },
+    "ramada": {
+      "id": "ramada",
+      "name": "Ramada Chennai",
+      "location": "Egmore, Chennai",
+      "description": "Budget-friendly hotel with clean rooms and essential amenities",
+      "rating": 4.1,
+      "reviews": 389,
+      "image": "ramada.jpg",
+      "features": ["Budget", "Clean", "Friendly", "Value", "Basic"],
+      "type": "budget",
+      "amenities": ["wifi", "parking", "restaurant"],
+      "pricing": {
+        "standard": 3200,
+        "deluxe": 4500,
+        "suite": 6500,
+        "presidential": 9500
+      },
+      "rooms": {
+        "total": 60,
+        "available": 25,
+        "types": {
+          "standard": 40,
+          "deluxe": 15,
+          "suite": 4,
+          "presidential": 1
+        }
+      }
+    },
+    "holiday-inn": {
+      "id": "holiday-inn",
+      "name": "Holiday Inn Express",
+      "location": "OMR, Chennai",
+      "description": "Express service hotel with quick check-in and essential amenities",
+      "rating": 4.0,
+      "reviews": 298,
+      "image": "holiday-lnn.jpg",
+      "features": ["Express", "Quick", "Value", "Modern", "Efficient"],
+      "type": "budget",
+      "amenities": ["wifi", "parking", "restaurant"],
+      "pricing": {
+        "standard": 2800,
+        "deluxe": 3800,
+        "suite": 5500,
+        "presidential": 8000
+      },
+      "rooms": {
+        "total": 50,
+        "available": 22,
+        "types": {
+          "standard": 35,
+          "deluxe": 12,
+          "suite": 2,
+          "presidential": 1
+        }
+      }
+    }
+  },
+  "foodMenu": {
+    "breakfast": [
+      {
+        "id": "idli",
+        "name": "Idli Sambar (2pcs)",
+        "price": 100,
+        "image": "idli.jpg",
+        "description": "Soft rice cakes with spicy lentil soup",
+        "category": "veg",
+        "available": true
+      },
+      {
+        "id": "dosa",
+        "name": "Masala Dosa",
+        "price": 120,
+        "image": "dosa.webp",
+        "description": "Crispy crepe filled with spiced potatoes",
+        "category": "veg",
+        "available": true
+      },
+      {
+        "id": "bread-omelette",
+        "name": "Bread Omelette (2 Eggs)",
+        "price": 200,
+        "image": "bread omlete.webp",
+        "description": "Fluffy omelette with toasted bread",
+        "category": "non-veg",
+        "available": true
+      },
+      {
+        "id": "pongal",
+        "name": "Ven Pongal",
+        "price": 150,
+        "image": "pongal.webp",
+        "description": "Traditional South Indian rice dish with ghee",
+        "category": "veg",
+        "available": true
+      },
+      {
+        "id": "vada",
+        "name": "Medu Vada (2pcs)",
+        "price": 80,
+        "image": "vada.webp",
+        "description": "Crispy fried lentil donuts with sambar",
+        "category": "veg",
+        "available": true
+      }
+    ],
+    "lunch": [
+      {
+        "id": "chicken-biryani",
+        "name": "Chicken Biryani",
+        "price": 450,
+        "image": "chicken biriyani.webp",
+        "description": "Aromatic basmati rice with tender chicken",
+        "category": "non-veg",
+        "available": true
+      },
+      {
+        "id": "mutton-biryani",
+        "name": "Mutton Biryani",
+        "price": 500,
+        "image": "mutton biriyani.webp",
+        "description": "Fragrant rice with tender mutton",
+        "category": "non-veg",
+        "available": true
+      },
+      {
+        "id": "paneer-tikka",
+        "name": "Paneer Tikka Masala",
+        "price": 380,
+        "image": "paneer tikka.webp",
+        "description": "Cottage cheese in creamy tomato sauce",
+        "category": "veg",
+        "available": true
+      },
+      {
+        "id": "fish-curry",
+        "name": "Fish Curry",
+        "price": 400,
+        "image": "fish gravy.webp",
+        "description": "Spicy fish curry with rice",
+        "category": "non-veg",
+        "available": true
+      },
+      {
+        "id": "veg-biryani",
+        "name": "Vegetable Biryani",
+        "price": 350,
+        "image": "veg biriyani.webp",
+        "description": "Aromatic rice with mixed vegetables",
+        "category": "veg",
+        "available": true
+      }
+    ],
+    "dinner": [
+      {
+        "id": "butter-chicken",
+        "name": "Butter Chicken",
+        "price": 550,
+        "image": "chicken gravy'.webp",
+        "description": "Tender chicken in rich tomato and cream sauce",
+        "category": "non-veg",
+        "available": true
+      },
+      {
+        "id": "mutton-curry",
+        "name": "Mutton Curry",
+        "price": 480,
+        "image": "mutton gravy.webp",
+        "description": "Spicy mutton curry with aromatic spices",
+        "category": "non-veg",
+        "available": true
+      },
+      {
+        "id": "prawn-curry",
+        "name": "Prawn Curry",
+        "price": 520,
+        "image": "prawn gravy.webp",
+        "description": "Fresh prawns in coconut curry",
+        "category": "non-veg",
+        "available": true
+      },
+      {
+        "id": "veg-thali",
+        "name": "Royal Vegetarian Thali",
+        "price": 420,
+        "image": "mini lunch.webp",
+        "description": "Complete meal with multiple vegetarian dishes",
+        "category": "veg",
+        "available": true
+      }
+    ],
+    "beverages": [
+      {
+        "id": "coffee",
+        "name": "Coffee",
+        "price": 80,
+        "image": "coffee.webp",
+        "description": "Freshly brewed coffee",
+        "category": "veg",
+        "available": true
+      },
+      {
+        "id": "tea",
+        "name": "Tea",
+        "price": 60,
+        "image": "tea.webp",
+        "description": "Traditional Indian tea",
+        "category": "veg",
+        "available": true
+      },
+      {
+        "id": "fresh-juice",
+        "name": "Fresh Juice",
+        "price": 120,
+        "image": "lemon soda.webp",
+        "description": "Seasonal fresh fruit juice",
+        "category": "veg",
+        "available": true
+      }
+    ],
+    "desserts": [
+      {
+        "id": "kesari",
+        "name": "Kesari",
+        "price": 120,
+        "image": "kesari.webp",
+        "description": "Traditional South Indian sweet dish",
+        "category": "veg",
+        "available": true
+      },
+      {
+        "id": "payasam",
+        "name": "Payasam",
+        "price": 100,
+        "image": "payasam.webp",
+        "description": "Traditional South Indian dessert",
+        "category": "veg",
+        "available": true
+      },
+      {
+        "id": "ice-cream",
+        "name": "Ice Cream",
+        "price": 80,
+        "image": "ice cream.webp",
+        "description": "Vanilla, Chocolate, Strawberry",
+        "category": "veg",
+        "available": true
+      }
+    ]
+  },
+  "staff": {
+    "rajesh": {
+      "id": "rajesh",
+      "name": "Rajesh Kumar",
+      "role": "Housekeeping Supervisor",
+      "department": "Housekeeping",
+      "tasks": [
+        {
+          "id": "task1",
+          "title": "Room 101 - Cleaning",
+          "description": "Complete cleaning and sanitization of room 101",
+          "priority": "high",
+          "status": "pending",
+          "assignedAt": "2025-01-27T08:00:00Z",
+          "dueAt": "2025-01-27T14:00:00Z"
+        }
+      ]
+    },
+    "priya": {
+      "id": "priya",
+      "name": "Priya Sharma",
+      "role": "Food Service Manager",
+      "department": "Food Service",
+      "tasks": [
+        {
+          "id": "task2",
+          "title": "Restaurant Setup",
+          "description": "Prepare restaurant for lunch service",
+          "priority": "medium",
+          "status": "in-progress",
+          "assignedAt": "2025-01-27T10:00:00Z",
+          "dueAt": "2025-01-27T12:00:00Z"
+        }
+      ]
+    },
+    "amit": {
+      "id": "amit",
+      "name": "Amit Patel",
+      "role": "Guest Services",
+      "department": "Guest Services",
+      "tasks": [
+        {
+          "id": "task3",
+          "title": "Luggage Assistance",
+          "description": "Help guest in room 312 with luggage to lobby",
+          "priority": "medium",
+          "status": "pending",
+          "assignedAt": "2025-01-27T11:00:00Z",
+          "dueAt": "2025-01-27T13:00:00Z"
+        }
+      ]
+    }
+  },
+  "bookings": [],
+  "lastUpdated": "2025-01-27T10:00:00Z"
+}

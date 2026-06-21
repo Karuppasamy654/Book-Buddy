@@ -5,13 +5,13 @@ const { sequelize, FoodItem, Hotel, User, HotelFood, StaffAssignment, Booking, R
 const { protect, authorize } = require('../middleware/auth');
 
 const requireManager = (req, res, next) => {
-  if (req.user.role !== 'Manager') {
+  if (req.user.role !== 'manager') {
     return res.status(403).json({ message: 'Access denied. Manager role required.' });
   }
   next();
 };
 
-router.put('/food/:food_item_id/price', protect, authorize('Manager'), async (req, res) => {
+router.put('/food/:food_item_id/price', protect, authorize('manager'), async (req, res) => {
   try {
     const { food_item_id } = req.params;
     const { price } = req.body;
@@ -21,7 +21,7 @@ router.put('/food/:food_item_id/price', protect, authorize('Manager'), async (re
     }
     
     const me = await User.findByPk(req.user.user_id, { attributes: ['user_id','role','hotel_id'] });
-    if (!me || me.role !== 'Manager' || !me.hotel_id) {
+    if (!me || String(me.role).toLowerCase() !== 'manager' && String(me.role).toLowerCase() !== 'admin') {
       return res.status(403).json({ message: 'Unauthorized for this operation' });
     }
     if (db.HotelFood) {
@@ -69,7 +69,6 @@ router.put('/food/:food_item_id/price', protect, authorize('Manager'), async (re
       } else {
         oldPrice = link.price ?? oldPrice;
         await link.update({ price }, { transaction: t });
-        await foodItem.update({ price }, { transaction: t });
       }
     } else {
       scope = 'global';
@@ -98,12 +97,12 @@ router.put('/food/:food_item_id/price', protect, authorize('Manager'), async (re
   }
 });
 
-router.put('/food/:food_item_id/stock', protect, authorize('Manager'), async (req, res) => {
+router.put('/food/:food_item_id/stock', protect, authorize('manager'), async (req, res) => {
   try {
     const { food_item_id } = req.params;
     const { delta, stock } = req.body || {};
     const me = await User.findByPk(req.user.user_id, { attributes: ['user_id','role','hotel_id'] });
-    if (!me || me.role !== 'Manager' || !me.hotel_id) {
+    if (!me || String(me.role).toLowerCase() !== 'manager' && String(me.role).toLowerCase() !== 'admin') {
       return res.status(403).json({ success: false, message: 'Unauthorized' });
     }
     const qi = sequelize.getQueryInterface();
@@ -137,7 +136,7 @@ router.put('/food/:food_item_id/stock', protect, authorize('Manager'), async (re
 router.get('/tasks/mine', protect, async (req, res) => {
   try {
     const me = await User.findByPk(req.user.user_id, { attributes: ['user_id','role'] });
-    if (!me || me.role !== 'Staff') {
+    if (!me || String(me.role).toLowerCase() !== 'staff') {
       return res.status(403).json({ success: false, message: 'Unauthorized' });
     }
     const tasks = await StaffAssignment.findAll({ where: { staff_id: me.user_id }, order: [['assigned_at', 'DESC']] });
@@ -157,7 +156,7 @@ router.put('/tasks/:task_id/status', protect, async (req, res) => {
       return res.status(400).json({ success: false, message: 'Invalid status' });
     }
     const me = await User.findByPk(req.user.user_id, { attributes: ['user_id','role'] });
-    if (!me || me.role !== 'Staff') {
+    if (!me || String(me.role).toLowerCase() !== 'staff') {
       return res.status(403).json({ success: false, message: 'Unauthorized' });
     }
     const task = await StaffAssignment.findByPk(task_id);
@@ -171,12 +170,12 @@ router.put('/tasks/:task_id/status', protect, async (req, res) => {
   }
 });
 
-router.put('/food/:food_item_id', protect, authorize('Manager'), async (req, res) => {
+router.put('/food/:food_item_id', protect, authorize('manager'), async (req, res) => {
   try {
     const { food_item_id } = req.params;
     const { name, price, category, type } = req.body;
     const me = await User.findByPk(req.user.user_id, { attributes: ['user_id','role','hotel_id'] });
-    if (!me || me.role !== 'Manager' || !me.hotel_id) {
+    if (!me || String(me.role).toLowerCase() !== 'manager' && String(me.role).toLowerCase() !== 'admin') {
       return res.status(403).json({ message: 'Unauthorized for this operation' });
     }
     if (db.HotelFood) {
@@ -227,7 +226,7 @@ router.put('/food/:food_item_id', protect, authorize('Manager'), async (req, res
   }
 });
 
-router.post('/food', protect, authorize('Manager'), async (req, res) => {
+router.post('/food', protect, authorize('manager'), async (req, res) => {
   try {
     const { name, price, category, type } = req.body;
     
@@ -249,12 +248,12 @@ router.post('/food', protect, authorize('Manager'), async (req, res) => {
   }
 });
 
-router.put('/hotel/:hotel_id/room-price', protect, authorize('Manager'), async (req, res) => {
+router.put('/hotel/:hotel_id/room-price', protect, authorize('manager'), async (req, res) => {
   try {
     const { hotel_id } = req.params;
     const { base_price_per_night } = req.body;
     const me = await User.findByPk(req.user.user_id, { attributes: ['user_id','role','hotel_id'] });
-    if (!me || me.role !== 'Manager' || me.hotel_id !== Number(hotel_id)) {
+    if (!me || String(me.role).toLowerCase() !== 'manager' && String(me.role).toLowerCase() !== 'admin') {
       return res.status(403).json({ message: 'Unauthorized for this hotel' });
     }
     const t = await sequelize.transaction();
@@ -283,19 +282,19 @@ router.put('/hotel/:hotel_id/room-price', protect, authorize('Manager'), async (
   }
 });
 
-router.post('/tasks', protect, authorize('Manager'), async (req, res) => {
+router.post('/tasks', protect, authorize('manager'), async (req, res) => {
   try {
     const { staffEmail, title, description, due_date, shift = 'Morning' } = req.body;
     if (!staffEmail || !title) {
       return res.status(400).json({ success: false, message: 'staffEmail and title are required' });
     }
     const me = await User.findByPk(req.user.user_id, { attributes: ['user_id','role','hotel_id'] });
-    if (!me || me.role !== 'Manager' || !me.hotel_id) {
+    if (!me || String(me.role).toLowerCase() !== 'manager' && String(me.role).toLowerCase() !== 'admin') {
       return res.status(403).json({ success: false, message: 'Unauthorized' });
     }
     const hotel = await Hotel.findByPk(me.hotel_id);
     const staff = await User.findOne({ where: { email: staffEmail }, attributes: ['user_id','email','role','hotel_id'] });
-    if (!staff || staff.role !== 'Staff') {
+    if (!staff || staff.role !== 'staff') {
       return res.status(404).json({ success: false, message: 'Staff user not found' });
     }
     if (staff.hotel_id !== me.hotel_id) {
@@ -322,7 +321,7 @@ router.post('/tasks', protect, authorize('Manager'), async (req, res) => {
   }
 });
 
-router.get('/tasks', protect, authorize('Manager'), async (req, res) => {
+router.get('/tasks', protect, authorize('manager'), async (req, res) => {
   try {
     const { staffEmail } = req.query;
     if (!staffEmail) {
@@ -344,7 +343,7 @@ router.get('/tasks', protect, authorize('Manager'), async (req, res) => {
   }
 });
 
-router.put('/tasks/:task_id', protect, authorize('Manager'), async (req, res) => {
+router.put('/tasks/:task_id', protect, authorize('manager'), async (req, res) => {
   try {
     const { task_id } = req.params;
     const { status } = req.body;
@@ -364,14 +363,14 @@ router.put('/tasks/:task_id', protect, authorize('Manager'), async (req, res) =>
   }
 });
 
-router.get('/staff', protect, authorize('Manager'), async (req, res) => {
+router.get('/staff', protect, authorize('manager'), async (req, res) => {
   try {
     const me = await User.findByPk(req.user.user_id, { attributes: ['user_id','role','hotel_id'] });
-    if (!me || me.role !== 'Manager' || !me.hotel_id) {
+    if (!me || String(me.role).toLowerCase() !== 'manager' && String(me.role).toLowerCase() !== 'admin') {
       return res.status(403).json({ success: false, message: 'Unauthorized' });
     }
     const staff = await User.findAll({
-      where: { role: 'Staff', hotel_id: me.hotel_id },
+      where: { role: 'staff', hotel_id: me.hotel_id },
       attributes: ['user_id','name','email','hotel_id']
     });
     return res.json({ success: true, data: staff });
@@ -381,10 +380,10 @@ router.get('/staff', protect, authorize('Manager'), async (req, res) => {
   }
 });
 
-router.get('/analytics', protect, authorize('Manager'), async (req, res) => {
+router.get('/analytics', protect, authorize('manager'), async (req, res) => {
   try {
     const me = await User.findByPk(req.user.user_id, { attributes: ['user_id','role','hotel_id'] });
-    if (!me || me.role !== 'Manager' || !me.hotel_id) {
+    if (!me || String(me.role).toLowerCase() !== 'manager' && String(me.role).toLowerCase() !== 'admin') {
       return res.status(403).json({ success: false, message: 'Unauthorized' });
     }
 
@@ -395,12 +394,12 @@ router.get('/analytics', protect, authorize('Manager'), async (req, res) => {
     const end = new Date(now.getFullYear(), now.getMonth() + 1, 1);
     const { Op } = require('sequelize');
 
-    const total_bookings_this_month = await Booking.count({ where: { hotel_id: me.hotel_id, booking_date: { [Op.gte]: start, [Op.lt]: end } } }).catch(() => 0);
+    const total_bookings_this_month = await Booking.count({ where: { hotel_id: me.hotel_id, check_in_date: { [Op.gte]: start, [Op.lt]: end } } }).catch(() => 0);
 
     let room_revenue_this_month = 0;
     try {
       const sumRows = await Booking.findAll({
-        where: { hotel_id: me.hotel_id, booking_date: { [Op.gte]: start, [Op.lt]: end } },
+        where: { hotel_id: me.hotel_id, check_in_date: { [Op.gte]: start, [Op.lt]: end } },
         attributes: [[
           sequelize.fn('sum', sequelize.literal('COALESCE("grand_total", COALESCE("room_total",0) + COALESCE("food_total",0))')),
           'sum'
@@ -409,7 +408,7 @@ router.get('/analytics', protect, authorize('Manager'), async (req, res) => {
       room_revenue_this_month = Number((sumRows && sumRows[0] && sumRows[0].get('sum')) || 0);
     } catch (_) {
       const roomRevRows = await Booking.findAll({
-        where: { hotel_id: me.hotel_id, booking_date: { [Op.gte]: start, [Op.lt]: end } },
+        where: { hotel_id: me.hotel_id, check_in_date: { [Op.gte]: start, [Op.lt]: end } },
         attributes: [[sequelize.fn('sum', sequelize.col('grand_total')), 'sum']]
       });
       room_revenue_this_month = Number((roomRevRows && roomRevRows[0] && roomRevRows[0].get('sum')) || 0);
@@ -424,7 +423,7 @@ router.get('/analytics', protect, authorize('Manager'), async (req, res) => {
           include: [{
             model: Booking,
             as: 'booking',
-            where: { hotel_id: me.hotel_id, booking_date: { [Op.gte]: start, [Op.lt]: end } },
+            where: { hotel_id: me.hotel_id, check_in_date: { [Op.gte]: start, [Op.lt]: end } },
             attributes: []
           }],
           attributes: []

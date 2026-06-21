@@ -891,6 +891,7 @@
                     method: 'POST',
                     body: JSON.stringify(payload)
                 });
+                try { localStorage.removeItem('foodOrder'); } catch (_) {}
 
                 const totalPayable = resp && resp.booking ? (resp.booking.total_payable || (resp.booking.room_total + (resp.booking.food_total||0))) : 0;
                 lastBookingId = resp && resp.booking ? resp.booking.booking_id : null;
@@ -1081,7 +1082,7 @@
                     btn.addEventListener('click', async () => {
                         await markPaid(bookingId, amount);
                         if (document.body.contains(modal)) document.body.removeChild(modal);
-                      
+                        try { localStorage.removeItem('foodOrder'); } catch (_) {}
                         window.location.href = 'book.html';
                     });
                 }
